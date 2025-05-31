@@ -18,7 +18,7 @@ class UsuarioSeeder extends Seeder
             'fecha_nacimiento' => '17-06-2000',
             'edad' => '24',
             'sexo' => 'masculino'
-            'direccion' => 'direccion prueba'
+            'direccion' => 'direccion prueba',
             'telefono' => '77777777'
             'estado' => 'activo'
             'tipo_usuario' => 'Administrador'
