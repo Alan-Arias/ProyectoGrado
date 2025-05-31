@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; 
+    background-color: #e9ecef; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 90vh;
+}
+
+.login-container {
+    background-color: #ffffff; 
+    border-radius: 15px; 
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1); 
+    padding: 40px; 
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    color: #343a40;
+    font-weight: bold; 
+    font-size: 26px;
+    margin-bottom: 10px; 
+}
+
+.paragraph {
+    color: #6c757d;
+    font-weight: 400;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    background-color: #f8f9fa; 
+    border: 1px solid #ced4da; 
+    padding: 12px 15px; 
+    font-size: 15px;
+    border-radius: 5px; 
+    color: #495057;
+    width: 90%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #007bff;
+    outline: none; 
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; 
+}
+
+.bottom-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    color: #495057;
+    font-size: 14px;
+}
+
+.bottom-text a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.bottom-text a:hover {
+    color: #0056b3;
+}
+
+.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Media Queries para mejorar la responsividad */
+@media (max-width: 600px) {
+    .login-container {
+        padding: 25px;
+    }
+}
