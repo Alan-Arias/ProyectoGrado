@@ -16,42 +16,41 @@ class UsuarioSeeder extends Seeder
         $personal = Personal::create([
             'nombre completo' => 'nombre prueba',
             'fecha_nacimiento' => '17-06-2000',
-            'edad' => '24',
-            'sexo' => 'masculino'
+            'sexo' => 'masculino',
             'direccion' => 'direccion prueba',
-            'telefono' => '77777777'
-            'estado' => 'activo'
-            'tipo_usuario' => 'Administrador'
+            'telefono' => '77777777',
+            'estado' => 'activo',
+            'tipo_usuario' => 'Administrador',
         ]);
         $personal2 = Personal::create([
             'nombre completo' => 'nombre prueba 2',
             'fecha_nacimiento' => '17-06-2000',
-            'edad' => '24',
             'sexo' => 'masculino',
             'direccion' => 'direccion prueba',
             'telefono' => '78888888',
             'estado' => 'activo',
             'tipo_usuario' => 'Veterinario',
+            'especialidad' => 'Zoonosis',
         ]);
         $personal3 = Personal::create([
             'nombre completo' => 'nombre prueba 3 ',
             'fecha_nacimiento' => '17-06-2000',
-            'edad' => '24',
             'sexo' => 'masculino',
             'direccion' => 'direccion prueba',
             'telefono' => '79999999',
             'estado' => 'activo',
             'tipo_usuario' => 'Secretaria',
+            'horario_trabajo' => '07:00 - 16:00',
         ]);
         $personal4 = Personal::create([
             'nombre completo' => 'nombre prueba 4',
             'fecha_nacimiento' => '17-06-2000',
-            'edad' => '24',
             'sexo' => 'masculino',
             'direccion' => 'direccion prueba',
             'telefono' => '74444444',
             'estado' => 'activo',
             'tipo_usuario' => 'Director General',
+            'anios_cargo' => '10',
         ]);
         // Crear usuarios
         $usuarioAdmin = usuario::create([
@@ -67,7 +66,6 @@ class UsuarioSeeder extends Seeder
             'nombre' => 'Usuario Veterinario',
             'email' => 'usuario@gmail.com',
             'password' => bcrypt('12345'),
-            'especialidad' => 'Zoonosis',
             'tipo_user' => 'Veterinario',
             'personal_id' => $personal2->id,
         ]);
@@ -76,7 +74,6 @@ class UsuarioSeeder extends Seeder
             'nombre' => 'Secretaria Ejemplo',
             'email' => 'secretaria@gmail.com',
             'password' => bcrypt('12345'),
-            'horario_trabajo' => '09:00 - 17:00',
             'tipo_user' => 'Secretaria',
             'personal_id' => $personal3->id,
         ]);
@@ -85,7 +82,6 @@ class UsuarioSeeder extends Seeder
             'nombre' => 'Director General',
             'email' => 'director@gmail.com',
             'password' => bcrypt('12345'),
-            'anios_cargo' => '10',
             'tipo_user' => 'Director General',
             'personal_id' => $personal4->id,
         ]);
