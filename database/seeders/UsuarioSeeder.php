@@ -29,8 +29,8 @@ class UsuarioSeeder extends Seeder
             'direccion' => 'direccion prueba',
             'telefono' => '78888888',
             'estado' => 'activo',
-	    'tipo_usuario' => 'Veterinario',
-	    'especialidad' => 'Zoonosis',
+            'tipo_usuario' => 'Veterinario',
+            'especialidad' => 'Zoonosis',
         ]);
         $personal3 = Personal::create([
             'nombre completo' => 'nombre prueba 3 ',
@@ -39,9 +39,8 @@ class UsuarioSeeder extends Seeder
             'direccion' => 'direccion prueba',
             'telefono' => '79999999',
             'estado' => 'activo',
-	    'tipo_usuario' => 'Secretaria',
-	    'horario_trabajo' => '07:00 - 16:00',
-        ]);
+            'tipo_usuario' => 'Secretaria',
+            'horario_trabajo' => '07:00 - 16:00',
         $personal4 = Personal::create([
             'nombre completo' => 'nombre prueba 4',
             'fecha_nacimiento' => '17-06-2000',
@@ -51,7 +50,6 @@ class UsuarioSeeder extends Seeder
             'estado' => 'activo',
 	    'tipo_usuario' => 'Director General',
 	    'anios_cargo' => '10',
-        ]);
         // Crear usuarios
         $usuarioAdmin = usuario::create([
             'nombre' => 'Alan Joel Arias Moron',

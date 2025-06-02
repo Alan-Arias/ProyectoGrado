@@ -27,6 +27,7 @@
                 <th>Intentos Realizados</th>
                 <th>Totales</th>
                 <th>Última Actualización</th>
+                <th>Estado</th>
                 <th>Acción</th>
             </tr>
         </thead>
@@ -39,7 +40,24 @@
                 <td>{{ $item->intentos_totales }}</td>
                 <td>{{ $item->updated_at }}</td>
                 <td>
-                    <form method="POST" action="{{ route('panel.reintentos.reset') }}">
+                    @php
+                        $estado = DB::table('censista')->where('codigo_estudiante', $item->id_censista)->value('activo');
+                    @endphp
+                    <span class="badge {{ $estado ? 'bg-success' : 'bg-secondary' }}">
+                        {{ $estado ? 'Aprobado' : 'Pendiente' }}
+                    </span>
+                </td>
+                <td>
+                    <form method="POST" action="{{ route('panel.reintentos.estado') }}">
+                        @csrf
+                        <input type="hidden" name="censista_id" value="{{ $item->id_censista }}">
+                        <input type="hidden" name="estado" value="{{ $estado ? '0' : '1' }}">
+                        <button class="btn btn-sm {{ $estado ? 'btn-danger' : 'btn-success' }}">
+                            {{ $estado ? 'Denegar' : 'Aprobar' }}
+                        </button>
+                    </form>
+
+                    <form method="POST" action="{{ route('panel.reintentos.reset') }}" class="mt-1">
                         @csrf
                         <input type="hidden" name="codigo_estudiante" value="{{ $item->id_censista }}">
                         <button name="reset_one" class="btn btn-warning btn-sm">

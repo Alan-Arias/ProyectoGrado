@@ -90,6 +90,7 @@ use App\Http\Controllers\PanelController;
 
     Route::get('/panel/reintentos', [PanelController::class, 'index'])->name('panel.reintentos');
     Route::post('/panel/reintentos/reset', [PanelController::class, 'reset'])->name('panel.reintentos.reset');
+    Route::post('/panel/reintentos/cambiar-estado', [PanelController::class, 'cambiarEstado'])->name('panel.reintentos.estado');
 
     Route::get('/Reportes', [ReporteController::class, 'reporteIndex']);
     Route::get('/Reportes/Animal', [ReporteController::class, 'reporteAnimal'])->name('reporteAnimal');
