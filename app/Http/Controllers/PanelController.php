@@ -41,4 +41,15 @@ class PanelController extends Controller
 
         return back()->with('mensaje', 'No se ha seleccionado ninguna acción.');
     }
+    public function cambiarEstado(Request $request)
+    {
+        $censistaId = $request->input('censista_id');
+        $nuevoEstado = $request->input('estado') == '1' ? 1 : 0;
+
+        DB::table('censista')
+            ->where('codigo_estudiante', $censistaId)
+            ->update(['activo' => $nuevoEstado]);
+
+        return back()->with('mensaje', 'El estado del censista ha sido actualizado.');
+    }
 }

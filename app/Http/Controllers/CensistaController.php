@@ -18,6 +18,16 @@ class CensistaController extends Controller
 
         if ($accion === 'login') {
             // Verificamos si el censista ya está en intento_censo
+            $censista = Censista::where('codigo_estudiante', $request->codigo_estudiante)->first();
+
+            if (!$censista) {
+                return redirect()->back()->with('mensaje', 'El censista no está registrado. Por favor regístrate primero.');
+            }
+
+            if (!$censista->activo) {
+                return redirect()->back()->with('mensaje', 'Tu cuenta aún no ha sido activada por un administrador.');
+            }
+
             $existe = DB::table('intento_censo')
                         ->where('id_censista', $request->codigo_estudiante)
                         ->exists();
@@ -26,10 +36,9 @@ class CensistaController extends Controller
                 session(['codigo_estudiante' => $request->codigo_estudiante]);
                 return redirect('/CensoAnimales/Propietarios')->with('mensaje', 'Bienvenido nuevamente, censista.');
             } else {
-                return redirect()->back()->with('mensaje', 'El censista no está registrado. Por favor regístrate primero.');
+                return redirect()->back()->with('mensaje', 'Falta configurar tu acceso al censo.');
             }
-        }
-
+        }        
         // Acción: registro
         $request->validate([
             'codigo_estudiante' => 'required',
@@ -54,10 +63,15 @@ class CensistaController extends Controller
                     'updated_at' => now(),
                 ]);
             }
-
-            session(['codigo_estudiante' => $censista->codigo_estudiante]);
-            return redirect('/CensoAnimales/Propietarios')->with('mensaje', 'Censista registrado correctamente.');
+            return back()->with('mensaje', 'Registro exitoso. Por favor, espere a que su cuenta sea habilitada por el administrador.');
         } else {
+            // Verificamos si está activo
+            $censista = DB::table('censista')->where('codigo_estudiante', $request->codigo_estudiante)->first();
+
+            if (!$censista || !$censista->activo) {
+                return back()->with('error', 'Tu acceso aún no ha sido autorizado por el administrador.');
+            }
+
             session(['codigo_estudiante' => $censista->codigo_estudiante]);
             return redirect('/CensoAnimales/Propietarios')->with('mensaje', 'Bienvenido nuevamente, censista.');
         }
